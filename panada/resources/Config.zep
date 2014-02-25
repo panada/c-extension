@@ -14,7 +14,7 @@ class Config
 {
     static private config;
     
-    static public function _cache(string name)
+    static private function _cache(string name)
     {
         var cfg = [];
         
@@ -30,33 +30,6 @@ class Config
         else {
             return self::config[name];
         }
-    }
-    
-    static public function debug(name = "main")
-    {
-        require APP . "config/" .name.".php";;
-        
-        return call_user_func(name);
-    }
-    
-    static public function main()
-    {
-        return self::_cache("main");
-    }
-    
-    static public function session()
-    {
-        return self::_cache("session");
-    }
-    
-    static public function cache()
-    {
-        return self::_cache("cache");
-    }
-    
-    static public function database()
-    {
-        return self::_cache("database");
     }
     
     public static function __callStatic(string name, array arguments = [] )

@@ -59,7 +59,7 @@ PHP_METHOD(Panada_Resources_Config, _cache) {
 	_0 = zephir_fetch_static_property_ce(panada_resources_config_ce, SL("config") TSRMLS_CC);
 	if (!(zephir_array_isset(_0, name))) {
 		ZEPHIR_INIT_VAR(_1);
-		ZEPHIR_GET_CONSTANT(_1, "PANADA_APP");
+		ZEPHIR_GET_CONSTANT(_1, "APP");
 		ZEPHIR_INIT_VAR(_2);
 		ZEPHIR_CONCAT_VSVS(_2, _1, "config/", name, ".php");
 		if (zephir_require_zval(_2 TSRMLS_CC) == FAILURE) {
@@ -74,98 +74,6 @@ PHP_METHOD(Panada_Resources_Config, _cache) {
 		RETURN_CTOR(_4);
 	}
 	ZEPHIR_MM_RESTORE();
-
-}
-
-PHP_METHOD(Panada_Resources_Config, debug) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *name = NULL, *_0, *_1;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 0, 1, &name);
-
-	if (!name) {
-		ZEPHIR_INIT_VAR(name);
-		ZVAL_STRING(name, "main", 1);
-	}
-
-
-	ZEPHIR_INIT_VAR(_0);
-	ZEPHIR_GET_CONSTANT(_0, "PANADA_APP");
-	ZEPHIR_INIT_VAR(_1);
-	ZEPHIR_CONCAT_VSVS(_1, _0, "config/", name, ".php");
-	if (zephir_require_zval(_1 TSRMLS_CC) == FAILURE) {
-		RETURN_MM_NULL();
-	}
-	//missing empty
-	ZEPHIR_RETURN_CALL_FUNCTION("call_user_func", NULL, name);
-	zephir_check_call_status();
-	RETURN_MM();
-
-}
-
-PHP_METHOD(Panada_Resources_Config, main) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	ZVAL_STRING(_0, "main", 0);
-	ZEPHIR_RETURN_CALL_SELF("_cache", NULL, _0);
-	zephir_check_temp_parameter(_0);
-	zephir_check_call_status();
-	RETURN_MM();
-
-}
-
-PHP_METHOD(Panada_Resources_Config, session) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	ZVAL_STRING(_0, "session", 0);
-	ZEPHIR_RETURN_CALL_SELF("_cache", NULL, _0);
-	zephir_check_temp_parameter(_0);
-	zephir_check_call_status();
-	RETURN_MM();
-
-}
-
-PHP_METHOD(Panada_Resources_Config, cache) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	ZVAL_STRING(_0, "cache", 0);
-	ZEPHIR_RETURN_CALL_SELF("_cache", NULL, _0);
-	zephir_check_temp_parameter(_0);
-	zephir_check_call_status();
-	RETURN_MM();
-
-}
-
-PHP_METHOD(Panada_Resources_Config, database) {
-
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0;
-
-	ZEPHIR_MM_GROW();
-
-	ZEPHIR_INIT_VAR(_0);
-	ZVAL_STRING(_0, "database", 0);
-	ZEPHIR_RETURN_CALL_SELF("_cache", NULL, _0);
-	zephir_check_temp_parameter(_0);
-	zephir_check_call_status();
-	RETURN_MM();
 
 }
 
@@ -195,7 +103,7 @@ PHP_METHOD(Panada_Resources_Config, __callStatic) {
 		RETURN_CTOR(_2);
 	}
 	ZEPHIR_INIT_VAR(_3);
-	ZEPHIR_GET_CONSTANT(_3, "PANADA_APP");
+	ZEPHIR_GET_CONSTANT(_3, "APP");
 	ZEPHIR_INIT_VAR(file);
 	ZEPHIR_CONCAT_VSVS(file, _3, "config/", name, ".php");
 
