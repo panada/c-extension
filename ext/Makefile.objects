@@ -1,0 +1,46 @@
+panada.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada.c -o panada.lo 
+kernel/main.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/main.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/main.c -o kernel/main.lo 
+kernel/memory.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/memory.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/memory.c -o kernel/memory.lo 
+kernel/exception.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/exception.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/exception.c -o kernel/exception.lo 
+kernel/hash.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/hash.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/hash.c -o kernel/hash.lo 
+kernel/debug.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/debug.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/debug.c -o kernel/debug.lo 
+kernel/backtrace.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/backtrace.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/backtrace.c -o kernel/backtrace.lo 
+kernel/object.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/object.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/object.c -o kernel/object.lo 
+kernel/array.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/array.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/array.c -o kernel/array.lo 
+kernel/extended/array.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/extended/array.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/extended/array.c -o kernel/extended/array.lo 
+kernel/string.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/string.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/string.c -o kernel/string.lo 
+kernel/fcall.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/fcall.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/fcall.c -o kernel/fcall.lo 
+kernel/require.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/require.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/require.c -o kernel/require.lo 
+kernel/file.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/file.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/file.c -o kernel/file.lo 
+kernel/operators.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/operators.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/operators.c -o kernel/operators.lo 
+kernel/concat.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/concat.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/concat.c -o kernel/concat.lo 
+kernel/variables.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/variables.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/kernel/variables.c -o kernel/variables.lo 
+panada/gear.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/gear.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/gear.c -o panada/gear.lo 
+panada/resources/config.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/config.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/config.c -o panada/resources/config.lo 
+panada/resources/runexception.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c -o panada/resources/runexception.lo 
+$(phplibdir)/panada.la: ./panada.la
+	$(LIBTOOL) --mode=install cp ./panada.la $(phplibdir)
+
+./panada.la: $(shared_objects_panada) $(PANADA_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_panada) $(PANADA_SHARED_LIBADD)
+
