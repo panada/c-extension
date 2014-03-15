@@ -27,6 +27,7 @@
 zend_class_entry *panada_gear_ce;
 zend_class_entry *panada_resources_config_ce;
 zend_class_entry *panada_resources_runexception_ce;
+zend_class_entry *panada_resources_uri_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(panada)
 
@@ -46,6 +47,7 @@ static PHP_MINIT_FUNCTION(panada)
 	ZEPHIR_INIT(Panada_Gear);
 	ZEPHIR_INIT(Panada_Resources_Config);
 	ZEPHIR_INIT(Panada_Resources_RunException);
+	ZEPHIR_INIT(Panada_Resources_Uri);
 
 #if PHP_VERSION_ID < 50500
 	setlocale(LC_ALL, old_lc_all);

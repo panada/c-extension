@@ -11,7 +11,7 @@ SHLIB_DL_SUFFIX_NAME = so
 ZEND_EXT_TYPE = zend_extension
 RE2C = re2c
 AWK = awk
-shared_objects_panada = panada.lo kernel/main.lo kernel/memory.lo kernel/exception.lo kernel/hash.lo kernel/debug.lo kernel/backtrace.lo kernel/object.lo kernel/array.lo kernel/extended/array.lo kernel/string.lo kernel/fcall.lo kernel/require.lo kernel/file.lo kernel/operators.lo kernel/concat.lo kernel/variables.lo panada/gear.lo panada/resources/config.lo panada/resources/runexception.lo
+shared_objects_panada = panada.lo kernel/main.lo kernel/memory.lo kernel/exception.lo kernel/hash.lo kernel/debug.lo kernel/backtrace.lo kernel/object.lo kernel/array.lo kernel/extended/array.lo kernel/string.lo kernel/fcall.lo kernel/require.lo kernel/file.lo kernel/operators.lo kernel/concat.lo kernel/variables.lo panada/gear.lo panada/resources/config.lo panada/resources/runexception.lo panada/resources/uri.lo
 PHP_PECL_EXTENSION = panada
 PHP_MODULES = $(phplibdir)/panada.la
 PHP_ZEND_EX =
@@ -216,6 +216,8 @@ panada/resources/config.lo: /Users/kandar/DocumentRoot/project/panada/git/extens
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/config.c -o panada/resources/config.lo 
 panada/resources/runexception.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c -o panada/resources/runexception.lo 
+panada/resources/uri.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/uri.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/uri.c -o panada/resources/uri.lo 
 $(phplibdir)/panada.la: ./panada.la
 	$(LIBTOOL) --mode=install cp ./panada.la $(phplibdir)
 

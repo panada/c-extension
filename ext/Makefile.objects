@@ -38,6 +38,8 @@ panada/resources/config.lo: /Users/kandar/DocumentRoot/project/panada/git/extens
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/config.c -o panada/resources/config.lo 
 panada/resources/runexception.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/runexception.c -o panada/resources/runexception.lo 
+panada/resources/uri.lo: /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/uri.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/kandar/DocumentRoot/project/panada/git/extension/panada/ext/panada/resources/uri.c -o panada/resources/uri.lo 
 $(phplibdir)/panada.la: ./panada.la
 	$(LIBTOOL) --mode=install cp ./panada.la $(phplibdir)
 
