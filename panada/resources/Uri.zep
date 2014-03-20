@@ -2,7 +2,7 @@ namespace Panada\Resources;
 
 class Uri
 {
-    private pathUri = [];
+    private pathUri;
     public baseUri;
     public defaultController = "Home";
     
@@ -76,12 +76,19 @@ class Uri
      */
     public function path(segment = false)
     {
-	if segment !== false {
-	    return isset this->pathUri[segment] && this->pathUri[segment] != INDEX_FILE ? this->pathUri[segment] : false;
+        var path;
+        
+        if segment === false {
+            return this->pathUri;
         }
-	else {
-	    return this->pathUri;
+        
+        if fetch path, this->pathUri[segment] {
+            if path != INDEX_FILE {
+                return path;
+            }
         }
+        
+        return false;
     }
     
     /**
@@ -158,6 +165,17 @@ class Uri
     public function stripUriString(uri)
     {
 	return ! preg_match("/[^a-zA-Z0-9_.-]/", uri) ? true : false;
+    }
+    
+    /**
+     * Setter for default controller
+     *
+     * @param string $defaultController
+     * @return void
+     */
+    public function setDefaultController(defaultController)
+    {
+	let this->defaultController = defaultController;
     }
     
     /**

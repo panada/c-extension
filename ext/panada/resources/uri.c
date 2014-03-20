@@ -20,6 +20,7 @@
 #include "kernel/operators.h"
 #include "kernel/object.h"
 
+
 ZEPHIR_INIT_CLASS(Panada_Resources_Uri) {
 
 	ZEPHIR_REGISTER_CLASS(Panada\\Resources, Uri, panada, resources_uri, panada_resources_uri_method_entry, 0);
@@ -37,7 +38,8 @@ ZEPHIR_INIT_CLASS(Panada_Resources_Uri) {
 PHP_METHOD(Panada_Resources_Uri, __construct) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *selfArray, *pathInfo, *selfKey = NULL, *_SERVER, *_0, *_1, *_2, _3, *_4, _5 = zval_used_for_init, *_6 = NULL, *_7, *_8 = NULL, *_9, *_10, *_11 = NULL, *_12, *_13;
+	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL, *_8 = NULL;
+	zval *selfArray, *pathInfo, *selfKey = NULL, *_SERVER, *_0, *_1, *_2, _3, *_4, _6 = zval_used_for_init, *_7 = NULL, *_9, *_10 = NULL, *_11, *_12, *_13 = NULL, *_14;
 
 	ZEPHIR_MM_GROW();
 	ZEPHIR_INIT_VAR(pathInfo);
@@ -59,37 +61,34 @@ PHP_METHOD(Panada_Resources_Uri, __construct) {
 	zephir_fast_explode_str(selfArray, SL("/"), _0, LONG_MAX TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_4);
 	ZEPHIR_GET_CONSTANT(_4, "INDEX_FILE");
-	ZEPHIR_CALL_FUNCTION(&selfKey, "array_search", NULL, _4, selfArray);
+	ZEPHIR_CALL_FUNCTION(&selfKey, "array_search", &_5, _4, selfArray);
 	zephir_check_call_status();
-	ZEPHIR_SINIT_VAR(_5);
-	ZVAL_LONG(&_5, ((zephir_get_numberval(selfKey) + 1)));
-	ZEPHIR_CALL_FUNCTION(&_6, "array_slice", NULL, selfArray, &_5);
+	ZEPHIR_SINIT_VAR(_6);
+	ZVAL_LONG(&_6, ((zephir_get_numberval(selfKey) + 1)));
+	ZEPHIR_CALL_FUNCTION(&_7, "array_slice", &_8, selfArray, &_6);
 	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("pathUri"), _6 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_7);
-	ZEPHIR_CALL_METHOD(&_8, this_ptr, "ishttps", NULL);
+	zephir_update_property_this(this_ptr, SL("pathUri"), _7 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_9);
+	ZEPHIR_CALL_METHOD(&_10, this_ptr, "ishttps",  NULL);
 	zephir_check_call_status();
-	if (zephir_is_true(_8)) {
-		ZEPHIR_INIT_BNVAR(_7);
-		ZVAL_STRING(_7, "https://", 1);
+	if (zephir_is_true(_10)) {
+		ZEPHIR_INIT_BNVAR(_9);
+		ZVAL_STRING(_9, "https://", 1);
 	} else {
-		ZEPHIR_INIT_BNVAR(_7);
-		ZVAL_STRING(_7, "http://", 1);
+		ZEPHIR_INIT_BNVAR(_9);
+		ZVAL_STRING(_9, "http://", 1);
 	}
-	zephir_update_property_this(this_ptr, SL("baseUri"), _7 TSRMLS_CC);
-	zephir_array_fetch_string(&_9, _SERVER, SL("HTTP_HOST"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_10);
-	ZEPHIR_SINIT_NVAR(_5);
-	ZVAL_LONG(&_5, 0);
-	ZEPHIR_CALL_FUNCTION(&_11, "array_slice", NULL, selfArray, &_5, selfKey);
-	zephir_check_call_status();
-	zephir_fast_join_str(_10, SL("/"), _11 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("baseUri"), _9 TSRMLS_CC);
+	zephir_array_fetch_string(&_11, _SERVER, SL("HTTP_HOST"), PH_NOISY | PH_READONLY TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_12);
-	ZEPHIR_CONCAT_VVS(_12, _9, _10, "/");
-	zephir_update_property_this(this_ptr, SL("baseUri"), _12 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_13);
-	array_init(_13);
-	zephir_update_property_this(this_ptr, SL("pathUri"), _13 TSRMLS_CC);
+	ZEPHIR_SINIT_NVAR(_6);
+	ZVAL_LONG(&_6, 0);
+	ZEPHIR_CALL_FUNCTION(&_13, "array_slice", &_8, selfArray, &_6, selfKey);
+	zephir_check_call_status();
+	zephir_fast_join_str(_12, SL("/"), _13 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_14);
+	ZEPHIR_CONCAT_VVS(_14, _11, _12, "/");
+	zephir_update_property_this(this_ptr, SL("baseUri"), _14 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -149,7 +148,7 @@ PHP_METHOD(Panada_Resources_Uri, removeQuery) {
 
 	ZEPHIR_INIT_VAR(pathAr);
 	zephir_fast_explode_str(pathAr, SL("?"), path, LONG_MAX TSRMLS_CC);
-	if ((zephir_fast_count_int(pathAr TSRMLS_CC) > 0)) {
+	if (zephir_fast_count_int(pathAr TSRMLS_CC) > 0) {
 		ZEPHIR_OBS_NVAR(path);
 		zephir_array_fetch_long(&path, pathAr, 0, PH_NOISY TSRMLS_CC);
 	}
@@ -165,8 +164,7 @@ PHP_METHOD(Panada_Resources_Uri, removeQuery) {
  */
 PHP_METHOD(Panada_Resources_Uri, path) {
 
-	zend_bool _1;
-	zval *segment = NULL, *_0, *_2, *_3, *_4, *_5, *_6;
+	zval *segment = NULL, *path, *_0, *_1;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &segment);
@@ -176,28 +174,18 @@ PHP_METHOD(Panada_Resources_Uri, path) {
 	}
 
 
-	if (!ZEPHIR_IS_FALSE(segment)) {
-		_0 = zephir_fetch_nproperty_this(this_ptr, SL("pathUri"), PH_NOISY_CC);
-		_1 = zephir_array_isset(_0, segment);
-		if (_1) {
-			_2 = zephir_fetch_nproperty_this(this_ptr, SL("pathUri"), PH_NOISY_CC);
-			zephir_array_fetch(&_3, _2, segment, PH_NOISY | PH_READONLY TSRMLS_CC);
-			ZEPHIR_INIT_VAR(_4);
-			ZEPHIR_GET_CONSTANT(_4, "INDEX_FILE");
-			_1 = !ZEPHIR_IS_EQUAL(_3, _4);
-		}
-		if (_1) {
-			_5 = zephir_fetch_nproperty_this(this_ptr, SL("pathUri"), PH_NOISY_CC);
-			zephir_array_fetch(&_6, _5, segment, PH_NOISY | PH_READONLY TSRMLS_CC);
-			ZEPHIR_CPY_WRT(return_value, _6);
-		} else {
-			ZVAL_BOOL(return_value, 0);
-		}
-		RETURN_MM();
-	} else {
+	if (ZEPHIR_IS_FALSE(segment)) {
 		RETURN_MM_MEMBER(this_ptr, "pathUri");
 	}
-	ZEPHIR_MM_RESTORE();
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("pathUri"), PH_NOISY_CC);
+	if (zephir_array_isset_fetch(&path, _0, segment, 1 TSRMLS_CC)) {
+		ZEPHIR_INIT_VAR(_1);
+		ZEPHIR_GET_CONSTANT(_1, "INDEX_FILE");
+		if (!ZEPHIR_IS_EQUAL(path, _1)) {
+			RETURN_CTOR(path);
+		}
+	}
+	RETURN_MM_BOOL(0);
 
 }
 
@@ -283,6 +271,7 @@ PHP_METHOD(Panada_Resources_Uri, getMethod) {
  */
 PHP_METHOD(Panada_Resources_Uri, getRequests) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *segment = NULL, *_0 = NULL;
 
@@ -298,9 +287,9 @@ PHP_METHOD(Panada_Resources_Uri, getRequests) {
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "path", NULL, segment);
 	zephir_check_call_status();
 	if (zephir_is_true(_0)) {
-		ZEPHIR_CALL_METHOD(&_0, this_ptr, "path", NULL);
+		ZEPHIR_CALL_METHOD(&_0, this_ptr, "path",  NULL);
 		zephir_check_call_status();
-		ZEPHIR_RETURN_CALL_FUNCTION("array_slice", NULL, _0, segment);
+		ZEPHIR_RETURN_CALL_FUNCTION("array_slice", &_1, _0, segment);
 		zephir_check_call_status();
 		RETURN_MM();
 	} else {
@@ -336,6 +325,24 @@ PHP_METHOD(Panada_Resources_Uri, stripUriString) {
 		ZVAL_BOOL(return_value, 0);
 	}
 	RETURN_MM();
+
+}
+
+/**
+ * Setter for default controller
+ *
+ * @param string $defaultController
+ * @return void
+ */
+PHP_METHOD(Panada_Resources_Uri, setDefaultController) {
+
+	zval *defaultController;
+
+	zephir_fetch_params(0, 1, 0, &defaultController);
+
+
+
+	zephir_update_property_this(this_ptr, SL("defaultController"), defaultController TSRMLS_CC);
 
 }
 

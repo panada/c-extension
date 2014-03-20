@@ -8,17 +8,21 @@
 
 #include "kernel/globals.h"
 
-#define PHP_PANADA_NAME    "panada"
-#define PHP_PANADA_VERSION "0.0.1"
-#define PHP_PANADA_EXTNAME "panada"
+#define PHP_PANADA_NAME        "panada"
+#define PHP_PANADA_VERSION     "0.0.1"
+#define PHP_PANADA_EXTNAME     "panada"
+#define PHP_PANADA_AUTHOR      ""
+#define PHP_PANADA_ZEPVERSION  "0.3.10a"
+#define PHP_PANADA_DESCRIPTION ""
 
 
 
 ZEND_BEGIN_MODULE_GLOBALS(panada)
 
 	/* Memory */
-	zephir_memory_entry *start_memory;
-	zephir_memory_entry *active_memory;
+	zephir_memory_entry *start_memory; /**< The first preallocated frame */
+	zephir_memory_entry *end_memory; /**< The last preallocate frame */
+	zephir_memory_entry *active_memory; /**< The current memory frame */
 
 	/* Virtual Symbol Tables */
 	zephir_symbol_table *active_symbol_table;

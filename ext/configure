@@ -4143,7 +4143,7 @@ if test "$PHP_PANADA" = "yes"; then
 
 $as_echo "#define HAVE_PANADA 1" >>confdefs.h
 
-	panada_sources="panada.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c panada/gear.c panada/resources/config.c panada/resources/runexception.c panada/resources/uri.c "
+	panada_sources="panada.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c panada/gear.c panada/resources/config.c panada/resources/runexception.c panada/resources/uri.c panada/test.c "
 
   ext_builddir=.
   ext_srcdir=$abs_srcdir

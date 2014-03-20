@@ -8,5 +8,6 @@
 #include "panada/resources/config.h"
 #include "panada/resources/runexception.h"
 #include "panada/resources/uri.h"
+#include "panada/test.h"
 
 #endif

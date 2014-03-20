@@ -28,6 +28,7 @@ zend_class_entry *panada_gear_ce;
 zend_class_entry *panada_resources_config_ce;
 zend_class_entry *panada_resources_runexception_ce;
 zend_class_entry *panada_resources_uri_ce;
+zend_class_entry *panada_test_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(panada)
 
@@ -48,6 +49,7 @@ static PHP_MINIT_FUNCTION(panada)
 	ZEPHIR_INIT(Panada_Resources_Config);
 	ZEPHIR_INIT(Panada_Resources_RunException);
 	ZEPHIR_INIT(Panada_Resources_Uri);
+	ZEPHIR_INIT(Panada_Test);
 
 #if PHP_VERSION_ID < 50500
 	setlocale(LC_ALL, old_lc_all);
@@ -59,9 +61,6 @@ static PHP_MINIT_FUNCTION(panada)
 #ifndef ZEPHIR_RELEASE
 static PHP_MSHUTDOWN_FUNCTION(panada)
 {
-
-	//assert(ZEPHIR_GLOBAL(function_cache) == NULL);
-
 	return SUCCESS;
 }
 #endif
@@ -77,9 +76,6 @@ static void php_zephir_init_globals(zend_zephir_globals *zephir_globals TSRMLS_D
 
 	/* Virtual Symbol Tables */
 	zephir_globals->active_symbol_table = NULL;
-
-	/* Cache options */
-	//zephir_globals->function_cache = NULL;
 
 	/* Recursive Lock */
 	zephir_globals->recursive_lock = 0;
@@ -158,9 +154,15 @@ static PHP_RSHUTDOWN_FUNCTION(panada)
 
 static PHP_MINFO_FUNCTION(panada)
 {
+	php_info_print_box_start(0);
+	php_printf("%s", PHP_PANADA_DESCRIPTION);
+	php_info_print_box_end();
+
 	php_info_print_table_start();
 	php_info_print_table_header(2, PHP_PANADA_NAME, "enabled");
+	php_info_print_table_row(2, "Author", PHP_PANADA_AUTHOR);
 	php_info_print_table_row(2, "Version", PHP_PANADA_VERSION);
+	php_info_print_table_row(2, "Powered by Zephir", "Version " PHP_PANADA_ZEPVERSION);
 	php_info_print_table_end();
 
 
@@ -169,18 +171,37 @@ static PHP_MINFO_FUNCTION(panada)
 static PHP_GINIT_FUNCTION(panada)
 {
 	zephir_memory_entry *start;
+	int num_preallocated_frames = 24;
+	size_t i;
 
 	php_zephir_init_globals(panada_globals TSRMLS_CC);
 
-	/* Start Memory Frame */
-	start = (zephir_memory_entry *) pecalloc(1, sizeof(zephir_memory_entry), 1);
-	start->addresses       = pecalloc(16, sizeof(zval*), 1);
-	start->capacity        = 16;
-	start->hash_addresses  = pecalloc(4, sizeof(zval*), 1);
-	start->hash_capacity   = 4;
+	/* pre-allocated memory frames */
+	start = (zephir_memory_entry *) pecalloc(num_preallocated_frames, sizeof(zephir_memory_entry), 1);
+
+	for (i = 0; i < num_preallocated_frames; ++i) {
+		start[i].addresses = pecalloc(16, sizeof(zval*), 1);
+		start[i].capacity = 16;
+		start[i].hash_addresses = pecalloc(4, sizeof(zval*), 1);
+		start[i].hash_capacity = 4;
+
+#ifndef ZEPHIR_RELEASE
+		start[i].permanent = 1;
+#endif
+	}
+
+	start[0].next = &start[1];
+	start[num_preallocated_frames - 1].prev = &start[num_preallocated_frames - 2];
+
+	for (i = 1; i < num_preallocated_frames - 1; ++i) {
+		start[i].next = &start[i + 1];
+		start[i].prev = &start[i - 1];
+	}
 
 	panada_globals->start_memory = start;
+	panada_globals->end_memory = start + num_preallocated_frames;
 
+	/* Function call cache */
 	panada_globals->fcache = pemalloc(sizeof(HashTable), 1);
 #ifndef ZEPHIR_RELEASE
 	zend_hash_init(panada_globals->fcache, 128, NULL, zephir_fcall_cache_dtor, 1);
@@ -208,12 +229,22 @@ static PHP_GINIT_FUNCTION(panada)
 
 static PHP_GSHUTDOWN_FUNCTION(panada)
 {
+	size_t i;
+	int num_preallocated_frames = 24;
+
 	assert(panada_globals->start_memory != NULL);
 
-	pefree(panada_globals->start_memory->hash_addresses, 1);
-	pefree(panada_globals->start_memory->addresses, 1);
+	for (i = 0; i < num_preallocated_frames; ++i) {
+		pefree(panada_globals->start_memory[i].hash_addresses, 1);
+		pefree(panada_globals->start_memory[i].addresses, 1);
+	}
+
 	pefree(panada_globals->start_memory, 1);
 	panada_globals->start_memory = NULL;
+
+	zend_hash_destroy(panada_globals->fcache);
+	pefree(panada_globals->fcache, 1);
+	panada_globals->fcache = NULL;
 }
 
 zend_module_entry panada_module_entry = {

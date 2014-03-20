@@ -17,8 +17,8 @@
 #include "kernel/concat.h"
 #include "kernel/memory.h"
 #include "kernel/require.h"
-#include "kernel/fcall.h"
 #include "kernel/operators.h"
+#include "kernel/fcall.h"
 #include "kernel/file.h"
 #include "kernel/exception.h"
 
@@ -44,8 +44,7 @@ ZEPHIR_INIT_CLASS(Panada_Resources_Config) {
 
 PHP_METHOD(Panada_Resources_Config, _cache) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *name_param = NULL, *cfg = NULL, *_0, *_1, *_2, *_3, *_4;
+	zval *name_param = NULL, *cfg = NULL, *_0, *_1, *_2, *_3 = NULL, *_4, *_5;
 	zval *name = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -62,18 +61,34 @@ PHP_METHOD(Panada_Resources_Config, _cache) {
 		ZEPHIR_GET_CONSTANT(_1, "APP");
 		ZEPHIR_INIT_VAR(_2);
 		ZEPHIR_CONCAT_VSVS(_2, _1, "config/", name, ".php");
-		if (zephir_require_zval(_2 TSRMLS_CC) == FAILURE) {
+		ZEPHIR_OBSERVE_OR_NULLIFY_PPZV(&_3);
+		if (zephir_require_zval_ret(&_3, _2 TSRMLS_CC) == FAILURE) {
 			RETURN_MM_NULL();
 		}
-		ZEPHIR_CALL_FUNCTION(&cfg, "call_user_func", NULL, name);
-		zephir_check_call_status();
+		ZEPHIR_CPY_WRT(cfg, _3);
 		RETURN_CCTOR(cfg);
 	} else {
-		_3 = zephir_fetch_static_property_ce(panada_resources_config_ce, SL("config") TSRMLS_CC);
-		zephir_array_fetch(&_4, _3, name, PH_NOISY | PH_READONLY TSRMLS_CC);
-		RETURN_CTOR(_4);
+		_4 = zephir_fetch_static_property_ce(panada_resources_config_ce, SL("config") TSRMLS_CC);
+		zephir_array_fetch(&_5, _4, name, PH_NOISY | PH_READONLY TSRMLS_CC);
+		RETURN_CTOR(_5);
 	}
 	ZEPHIR_MM_RESTORE();
+
+}
+
+PHP_METHOD(Panada_Resources_Config, main) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	ZVAL_STRING(_0, "main", 0);
+	ZEPHIR_RETURN_CALL_SELF("__callstatic", NULL, _0);
+	zephir_check_temp_parameter(_0);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
@@ -129,7 +144,7 @@ PHP_METHOD(Panada_Resources_Config, __callStatic) {
 	ZEPHIR_CPY_WRT(e, EG(exception));
 	if (zephir_is_instance_of(e, SL("RunException") TSRMLS_CC)) {
 		zend_clear_exception(TSRMLS_C);
-		ZEPHIR_CALL_METHOD(&_6, e, "getmessage", NULL);
+		ZEPHIR_CALL_METHOD(&_6, e, "getmessage",  NULL);
 		zephir_check_call_status();
 		ZEPHIR_CALL_CE_STATIC(NULL, panada_resources_runexception_ce, "outputerror", NULL, _6);
 		zephir_check_call_status();

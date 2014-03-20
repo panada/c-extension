@@ -20,9 +20,7 @@ class Config
         
         if ! isset self::config[name] {
             
-            require APP . "config/" .name.".php";
-            
-            let cfg = call_user_func(name);
+            let cfg = require APP . "config/" .name.".php";
             let self::config[name] = cfg;
             
             return cfg;
@@ -30,6 +28,11 @@ class Config
         else {
             return self::config[name];
         }
+    }
+    
+    public static function main()
+    {
+        return self::__callStatic("main");
     }
     
     public static function __callStatic(string name, array arguments = [] )

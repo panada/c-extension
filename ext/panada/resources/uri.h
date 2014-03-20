@@ -11,6 +11,7 @@ PHP_METHOD(Panada_Resources_Uri, getClass);
 PHP_METHOD(Panada_Resources_Uri, getMethod);
 PHP_METHOD(Panada_Resources_Uri, getRequests);
 PHP_METHOD(Panada_Resources_Uri, stripUriString);
+PHP_METHOD(Panada_Resources_Uri, setDefaultController);
 PHP_METHOD(Panada_Resources_Uri, getDefaultController);
 PHP_METHOD(Panada_Resources_Uri, getBaseUri);
 
@@ -34,6 +35,10 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_panada_resources_uri_stripuristring, 0, 0, 1)
 	ZEND_ARG_INFO(0, uri)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_panada_resources_uri_setdefaultcontroller, 0, 0, 1)
+	ZEND_ARG_INFO(0, defaultController)
+ZEND_END_ARG_INFO()
+
 ZEPHIR_INIT_FUNCS(panada_resources_uri_method_entry) {
 	PHP_ME(Panada_Resources_Uri, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Panada_Resources_Uri, isHttps, NULL, ZEND_ACC_PUBLIC)
@@ -43,6 +48,7 @@ ZEPHIR_INIT_FUNCS(panada_resources_uri_method_entry) {
 	PHP_ME(Panada_Resources_Uri, getMethod, arginfo_panada_resources_uri_getmethod, ZEND_ACC_PUBLIC)
 	PHP_ME(Panada_Resources_Uri, getRequests, arginfo_panada_resources_uri_getrequests, ZEND_ACC_PUBLIC)
 	PHP_ME(Panada_Resources_Uri, stripUriString, arginfo_panada_resources_uri_stripuristring, ZEND_ACC_PUBLIC)
+	PHP_ME(Panada_Resources_Uri, setDefaultController, arginfo_panada_resources_uri_setdefaultcontroller, ZEND_ACC_PUBLIC)
 	PHP_ME(Panada_Resources_Uri, getDefaultController, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Panada_Resources_Uri, getBaseUri, NULL, ZEND_ACC_PUBLIC)
   PHP_FE_END

@@ -2,7 +2,7 @@
 #
 # Created by configure
 
-CFLAGS='-O2 -fvisibility=hidden -Wparentheses' \
+CFLAGS='-O2 -fvisibility=hidden -Wparentheses -flto' \
 CC='gcc' \
 './configure' \
 '--enable-panada' \

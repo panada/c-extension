@@ -2,7 +2,7 @@ PHP_ARG_ENABLE(panada, whether to enable panada, [ --enable-panada   Enable Pana
 
 if test "$PHP_PANADA" = "yes"; then
 	AC_DEFINE(HAVE_PANADA, 1, [Whether you have Panada])
-	panada_sources="panada.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c panada/gear.c panada/resources/config.c panada/resources/runexception.c panada/resources/uri.c "
+	panada_sources="panada.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c panada/gear.c panada/resources/config.c panada/resources/runexception.c panada/resources/uri.c panada/test.c "
 	PHP_NEW_EXTENSION(panada, $panada_sources, $ext_shared)
 
 	old_CPPFLAGS=$CPPFLAGS
